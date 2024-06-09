@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wrapper">
+  <form action="/vehicle_register" method="post" enctype="multipart/form-data">
+    <h2>Register Vehicle</h2>
+    <!-- <h4 style="color: white;">Scanned Number = {{ vehicle_number }}</h4> -->
+    <div class="input-field">
+      <input type="text" name="owner_name" required>
+      <label>Enter owner's name</label>
+    </div>
+    <div class="input-field">
+      <input type="text" name="vehicle_number" value="{{ vehicle_number if vehicle_number else '' }}" required>
+      <label>Enter vehicle number</label>
+    </div>
+    <div class="input-field">
+      <input type="file" name="vehicle_image" id="vehicle_image" accept="image/*" required>
+      <input type="hidden" id="vehicle_image_name" name="vehicle_image_name" value="{{ vehicle_image }}">
+    </div>
+    {% if vehicle_image %}
+    <script>
+      // Check if the vehicle_image variable is set
+      
+        // Get the file input element
+        var fileInput = document.getElementById('vehicle_image');
+        // Get the hidden input field containing the file name
+        var fileNameInput = document.getElementById('vehicle_image_name');
+        // Create a new File object with the vehicle_image value
+        var file = new File(["{{ vehicle_image }}"], fileNameInput.value, { type: "image/jpeg" });
+        // Set the value of the file input element
+        fileInput.files = [file];
+    </script>
+          {% endif %}
+    <button type="submit">Register</button>
+  </form>
+</div>
+{% endblock %}

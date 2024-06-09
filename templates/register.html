@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wrapper">
+  <form action="/register" method="post">
+    <!-- <h2>Scanned Number {{ scanned_number }}</h2> -->
+    <h2>Register</h2>
+    <div class="input-field">
+      <input type="text" name="username" required>
+      <label>Enter your username</label>
+    </div>
+    <div class="input-field">
+      <input type="email" name="email" required>
+      <label>Enter your email</label>
+    </div>
+    <div class="input-field">
+      <input type="password" name="password" required>
+      <label>Enter your password</label>
+    </div>
+    <button type="submit">Register</button>
+    <div class="register">
+      <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+  </form>
+</div>
+{% endblock %}

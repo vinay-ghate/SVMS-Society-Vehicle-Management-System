@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wrapper">
+  <h2>Vehicle Records</h2>
+  {% if records %}
+  <ul class="records-list">
+    {% for record in records %}
+    <li class="record-item">
+      <div class="record-info">
+        <p><strong>Vehicle Number:</strong> {{ record.vehicle_number }}</p>
+        <p><strong>Owner Name:</strong> {{ record.owner_name }}</p>
+        <p><strong>Timestamp:</strong> {{ record.timestamp }}</p>
+      </div>
+      <div class="record-image">
+        {% if record.vehicle_image %}
+        <img src="data:image/jpeg;base64,{{ record.vehicle_image }}" alt="Vehicle Image" class="vehicle-image">
+        {% else %}
+        <p>No image available</p>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No records found.</p>
+  {% endif %}
+</div>
+<style>
+  .wrapper {
+  padding: 20px;
+}
+
+.record-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.record-info {
+  flex: 1;
+}
+
+.record-image {
+  margin-left: 20px;
+}
+
+.vehicle-image {
+  width: 100%; /* Ensure all images have the same width */
+  max-width: 200px; /* Adjust as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+</style>
+{% endblock %}

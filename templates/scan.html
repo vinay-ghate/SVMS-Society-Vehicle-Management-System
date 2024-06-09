@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="wrapper">
+  <form action="/scan" method="post" enctype="multipart/form-data">
+    <h2>Scan New Vehicle</h2>
+    <div class="input-field">
+      <input type="file" name="vehicle_image" accept="image/*" required>
+      <!-- <label>Upload vehicle image</label> -->
+    </div>
+    <button type="submit">Scan</button>
+  </form>
+</div>
+{% endblock %}
